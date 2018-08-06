@@ -45,7 +45,7 @@ func log_it( in_string ):
 					i_line_offset = 20
 				
 				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).cursor_set_line( i_line_count )
-				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).insert_text_at_cursor( "\n" + in_string )		
+				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).insert_text_at_cursor( "\n" + in_string )
 				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).cursor_set_line( i_line_count - i_line_offset )
 			else:
 				arr_buffer.push_back( in_string )
