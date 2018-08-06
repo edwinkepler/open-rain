@@ -52,7 +52,6 @@ func _deferred_change_scene( path ):
 	get_tree().set_current_scene( s_current )
 	
 	ui.hide_views()
-	#ui.add_blurs()
 	#ui.add_highlights()
 	
 	# Dev console toggle button for touch devices
