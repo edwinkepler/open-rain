@@ -36,7 +36,7 @@ func change_scene( path ):
 # \see change_scene
 # \since 0.0.1
 #------------------------------------------------------------------------------#
-func _deferred_change_scene( path ):	
+func _deferred_change_scene( path ):
 	debug.log_it( "[" + get_name() + "] freeing current scene (" + get_tree().get_current_scene().get_name() + ")" )
 	# Free the current scene, there is no risk here
 	s_current.free()
@@ -62,6 +62,8 @@ func _deferred_change_scene( path ):
 	if OS.is_debug_build():
 		# Dev console
 		s_current.add_child( load( "res://scenes/ui/panConsole.tscn" ).instance() )
+
+	debug.log_it( "[" + get_name() + "] Current scene: " + get_tree().get_current_scene().get_name() )
 
 #-#
 # Will close the application without asking
