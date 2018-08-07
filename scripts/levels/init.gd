@@ -52,9 +52,9 @@ func _ready():
 	else:
 		if vars.cfg.get_value( "display", "fullscreen" ):
 			OS.set_window_fullscreen( true )
-			OS.set_window_size( Vector2( vars.v_screen_size.width, vars.v_screen_size.height ) )
-			get_viewport().set_size_override( true, Vector2( vars.v_screen_size.width, vars.v_screen_size.height ), Vector2( 0, 0 ) )
-			vars.update_viewport_size_var( vars.v_screen_size.width, vars.v_screen_size.height )
+			OS.set_window_size( Vector2( vars.v_screen_size.x, vars.v_screen_size.y ) )
+			get_viewport().set_size_override( true, Vector2( vars.v_screen_size.x, vars.v_screen_size.y ), Vector2( 0, 0 ) )
+			vars.update_viewport_size_var( vars.v_screen_size.x, vars.v_screen_size.y )
 		else:
 			OS.set_window_size( Vector2( vars.cfg.get_value( "display", "width" ), vars.cfg.get_value( "display", "height" ) ) )
 			get_viewport().set_size_override( true, Vector2( vars.cfg.get_value( "display", "width" ), vars.cfg.get_value( "display", "height" ) ), Vector2( 0, 0 ) )
