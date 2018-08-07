@@ -71,20 +71,19 @@ func deferred_add_highlights():
 	var arr_highlights = get_tree().get_nodes_in_group( "AddHighlight" )
 
 	for i in range( arr_highlights.size() ):
-
 		# New panel node that will work as a highlight
 		var n_highlight = Panel.new()
 		n_highlight.set_name( arr_highlights[i].get_name() + "Highlight" )
 		n_highlight.set_theme( load( "res://assets/themes/ui_theme.tres" ) )
 		n_highlight.set_draw_behind_parent( true )
-		
+
 		n_highlight.connect( "mouse_enter", self, "_highlight_show", [ n_highlight ], 1 )
 		n_highlight.connect( "mouse_exit", self, "_highlight_hide", [ n_highlight ], 1 )
 
 		n_highlight.connect( "input_event", self, "_highlight_pressed", [ arr_highlights[i] ], 1 )
-		
+
 		n_highlight.modulate.a = 0
-		
+
 		arr_highlights[ i ].add_child( n_highlight )
 		arr_highlights[ i ].move_child( n_highlight, 0 )
 
