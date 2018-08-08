@@ -68,19 +68,19 @@ func add_highlights():
 # \since 0.0.1
 #------------------------------------------------------------------------------#
 func deferred_add_highlights():
+	debug.log_it( "[" + get_name() + "] Adding highlights" )
 	var arr_highlights = get_tree().get_nodes_in_group( "AddHighlight" )
 
 	for i in range( arr_highlights.size() ):
 		# New panel node that will work as a highlight
 		var n_highlight = Panel.new()
-		n_highlight.set_name( arr_highlights[i].get_name() + "Highlight" )
+		n_highlight.set_name( arr_highlights[ i ].get_name() + "Highlight" )
 		n_highlight.set_theme( load( "res://assets/themes/ui_theme.tres" ) )
 		n_highlight.set_draw_behind_parent( true )
 
-		n_highlight.connect( "mouse_enter", self, "_highlight_show", [ n_highlight ], 1 )
-		n_highlight.connect( "mouse_exit", self, "_highlight_hide", [ n_highlight ], 1 )
-
-		n_highlight.connect( "input_event", self, "_highlight_pressed", [ arr_highlights[i] ], 1 )
+		n_highlight.connect( "mouse_entered", self, "_highlight_show", [ n_highlight ], 1 )
+		n_highlight.connect( "mouse_exited", self, "_highlight_hide", [ n_highlight ], 1 )
+		n_highlight.connect( "gui_input", self, "_highlight_pressed", [ arr_highlights[ i ] ], 1 )
 
 		n_highlight.modulate.a = 0
 
@@ -93,9 +93,11 @@ func deferred_add_highlights():
 		#------------------------------------------------------------------------------#
 
 		# Check children for Slider type and if there is one then connect signal for mouse enter
-		#if arr_highlights[ i ].get_child( 1 ).get_child( 1 ).get_type() == "HSlider":
-		#	arr_highlights[ i ].get_child( 1 ).get_child( 1 ).connect( "mouse_enter", self, "_highlight_show", [ n_highlight ], 1 )
-		#	arr_highlights[ i ].get_child( 1 ).get_child( 1 ).connect( "mouse_exit", self, "_highlight_hide", [ n_highlight ], 1 )
+		if arr_highlights[ i ].get_child( 1 ).get_child( 1 ).get_class() == "HSlider":
+			arr_highlights[ i ].get_child( 1 ).get_child( 1 ).connect( "mouse_entered", self, "_highlight_show", [ n_highlight ], 1 )
+			arr_highlights[ i ].get_child( 1 ).get_child( 1 ).connect( "mouse_exited", self, "_highlight_hide", [ n_highlight ], 1 )
+
+		debug.log_it( "[" + get_name() + "] " + arr_highlights[ i ].get_name() + " added" )
 
 #-#
 # Calls deferred_add_blurs. Deprecated. Don't use. Remove it.
@@ -140,7 +142,7 @@ func deferred_add_blurs():
 #------------------------------------------------------------------------------#
 func _highlight_show( in_node ):
 	in_node.rect_position = Vector2( -10, -5 )
-	in_node.rect_size = Vector2( in_node.get_parent().get_size().width + 20, in_node.get_parent().get_size().height + 10 )
+	in_node.rect_size = Vector2( in_node.get_parent().get_size().x + 20, in_node.get_parent().get_size().y + 10 )
 	in_node.modulate.a = 1
 
 #-#
@@ -171,7 +173,7 @@ func _highlight_pressed( event, in_node ):
 			for i in range( n_child_to_control.size() ):
 
 				# CheckButton
-				if n_child_to_control[ i ].get_type() == "CheckButton":
+				if n_child_to_control[ i ].get_class() == "CheckButton":
 					# Just toggle checkbox
 					if n_child_to_control[ i ].is_pressed():
 						n_child_to_control[ i ].set_pressed( false )
@@ -181,7 +183,7 @@ func _highlight_pressed( event, in_node ):
 						n_child_to_control[ i ].emit_signal( "toggled", true )
 				
 				# OptionButton
-				elif n_child_to_control[ i ].get_type() == "OptionButton":
+				elif n_child_to_control[ i ].get_class() == "OptionButton":
 					# Hide highlight by emiting mouse exit signal to highlight panel node
 					in_node.get_child( 0 ).emit_signal( "mouse_exit" )
 
@@ -233,11 +235,11 @@ func _highlight_pressed( event, in_node ):
 						if arr_dropdown_space[ j ].get_owner() == n_child_to_control[ j ].get_owner():
 							n_dropdown_space = arr_dropdown_space[ j ]
 					
-					n_dropdown_content.set_size( Vector2( 200, n_dropdown_space.get_size().height ) )
-					n_dropdown_content.set_position( Vector2( n_dropdown_space.get_global_position().x + n_dropdown_space.get_size().width - n_dropdown_content.get_size().width, n_dropdown_space.get_global_position().y ) )  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+					n_dropdown_content.rect_size = Vector2( 200, n_dropdown_space.get_size().y )
+					n_dropdown_content.rect_position = Vector2( n_dropdown_space.get_global_position().x + n_dropdown_space.get_size().x - n_dropdown_content.get_size().x, n_dropdown_space.get_global_position().y )
 
-					n_dropdown_close.set_size( Vector2( n_dropdown_space.get_size().width - n_dropdown_content.get_size().width, n_dropdown_space.get_size().height ) )
-					n_dropdown_close.set_position( n_dropdown_space.get_global_position() )  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
+					n_dropdown_close.rect_size = Vector2( n_dropdown_space.get_size().x - n_dropdown_content.get_size().x, n_dropdown_space.get_size().y )
+					n_dropdown_close.rect_position = n_dropdown_space.get_global_position()
 
 					n_dropdown_close.connect( "input_event", self, "_dropdown_close_pressed", [ n_dropdown_content, n_dropdown_close ], 1 )
 
