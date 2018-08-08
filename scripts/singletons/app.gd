@@ -52,7 +52,7 @@ func _deferred_change_scene( path ):
 	get_tree().set_current_scene( s_current )
 	
 	ui.hide_views()
-	#ui.add_highlights()
+	ui.add_highlights()
 	
 	# Dev console toggle button for touch devices
 	# It's instanced here because viewport size need to be known
