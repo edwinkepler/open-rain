@@ -140,15 +140,3 @@ func toggle_sliding():
 #------------------------------------------------------------------------------#
 func set_caller( in_node_name ):
 	n_caller_name = in_node_name
-
-#-#
-# Play default sound effect
-#
-# \since 0.0.1
-#------------------------------------------------------------------------------#
-func play_def_fx():
-	if get_tree().get_current_scene().has_node( "sndUISampler" ):
-		pass
-	#	get_tree().get_current_scene().get_node( "sndUISampler" ).play( "click_def" )
-	else:
-		debug.log_it( get_name() + " can't find sndUISampler." )
