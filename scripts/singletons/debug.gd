@@ -2,7 +2,7 @@
 # Singleton for debug build functions
 #
 # \see scenes/ui/panConsole
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
@@ -12,7 +12,7 @@ var arr_buffer = []
 #-#
 # Nothing
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _ready():
 	if OS.is_debug_build() == true:
@@ -28,7 +28,7 @@ func _ready():
 # \arg in_string String that will be printed
 #
 # \see log_it
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func log_it( in_string ):
 	if OS.is_debug_build() == true:
@@ -56,7 +56,7 @@ func log_it( in_string ):
 #-#
 # Print to scenes/ui/panConsole strings outputted when console wasn't avaiable
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func print_buffer_to_console():
 	for i in range( arr_buffer.size() ):
@@ -79,7 +79,7 @@ func print_buffer_to_console():
 # \arg in_parent Parent node of pressed node
 # \arg in_node Node object that have been pressed
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func print_pressed( in_parent, in_node ):
 	log_it( "[" + in_parent + "] " + in_node + " pressed" )

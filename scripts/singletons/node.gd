@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 # Singleton that is Node functionality, mainly animations and such
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
@@ -28,7 +28,7 @@ const SLIDING_SPEED = 60
 #
 # \see set_fade_in
 # \see process_fading
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func set_fade_out( in_flag ):
 	f_fading_out = in_flag
@@ -38,7 +38,7 @@ func set_fade_out( in_flag ):
 #
 # \see set_fade_out
 # \see process_fading
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func set_fade_in( in_flag ):
 	f_fading_in = in_flag
@@ -48,7 +48,7 @@ func set_fade_in( in_flag ):
 #
 # \see set_slide_in
 # \see process_sliding
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func set_slide_out( in_flag ):
 	f_sliding_out = in_flag
@@ -58,7 +58,7 @@ func set_slide_out( in_flag ):
 #
 # \see set_slide_out
 # \see process_sliding
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func set_slide_in( in_flag ):
 	f_sliding_in = in_flag
@@ -68,7 +68,7 @@ func set_slide_in( in_flag ):
 #
 # \see set_fade_in
 # \see set_fade_out
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func process_fading():
 	if f_fading_out and self.modulate.a >= 0:
@@ -94,7 +94,7 @@ func process_fading():
 #
 # \see set_slide_in
 # \see set_slide_out
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func process_sliding():
 	var v_pos = self.rect_position
@@ -122,7 +122,7 @@ func process_sliding():
 # \see set_slide_in
 # \see set_slide_out
 # \see process_sliding
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func toggle_sliding():
 	var v_pos = get_position()  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
@@ -136,7 +136,7 @@ func toggle_sliding():
 #-#
 # Set callers name
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func set_caller( in_node_name ):
 	n_caller_name = in_node_name

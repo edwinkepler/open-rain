@@ -3,7 +3,7 @@
 #
 # \more Handling opening, closing and changing scenes
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
@@ -13,7 +13,7 @@ var s_current = null
 #-#
 # Nothing
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _ready():
 	var root = get_tree().get_root()
@@ -25,7 +25,7 @@ func _ready():
 #-#
 # Calls deferred function to avoid crashing while switching scenes
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func change_scene( path ):
     call_deferred( "_deferred_change_scene", path )
@@ -34,7 +34,7 @@ func change_scene( path ):
 # Change scene. You need to provide full path to next scene
 #
 # \see change_scene
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _deferred_change_scene( path ):
 	debug.log_it( "[" + get_name() + "] freeing current scene (" + get_tree().get_current_scene().get_name() + ")" )
@@ -68,7 +68,7 @@ func _deferred_change_scene( path ):
 #-#
 # Will close the application without asking
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func force_quit():
 	get_tree().quit()

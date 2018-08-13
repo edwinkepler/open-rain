@@ -1,14 +1,14 @@
 #------------------------------------------------------------------------------#
 # Singleton for preparing UI and such
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
 #-#
 # Nothing
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _ready():
 	debug.log_it( "[" + get_name() + "] _ready() done" )
@@ -18,7 +18,7 @@ func _ready():
 #
 # \arg in_node Node that should be centered (main node of a view)
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func put_view_on_center( in_node ):
 	var i_height = vars.v_viewport_size.y - vars.int_view_margin_y
@@ -29,7 +29,7 @@ func put_view_on_center( in_node ):
 #-#
 # Will hide all views. Call it when new scene is loaded
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func hide_views():
 	var arr_views = get_tree().get_nodes_in_group( "View" )
@@ -45,7 +45,7 @@ func hide_views():
 #	Some nodes need to be removed when tab is changed or view or modal closed 
 #	or such. Call it on visibility change or whatever.
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func free_on_view_change():
 	var arr_n_to_free = get_tree().get_nodes_in_group( "FreeOnViewChange" )
@@ -57,7 +57,7 @@ func free_on_view_change():
 # Calls deferred_add_highlights
 #
 # \see deferred_add_highlights
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func add_highlights():
 	call_deferred( "deferred_add_highlights" )
@@ -65,7 +65,7 @@ func add_highlights():
 #-#
 # Every node in AddHighlight group will
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func deferred_add_highlights():
 	debug.log_it( "[" + get_name() + "] Adding highlights" )
@@ -75,7 +75,7 @@ func deferred_add_highlights():
 		# New panel node that will work as a highlight
 		var n_highlight = Panel.new()
 		n_highlight.set_name( arr_highlights[ i ].get_name() + "Highlight" )
-		n_highlight.set_theme( load( "res://assets/themes/ui_theme.tres" ) )
+		n_highlight.set_theme( load( "res://assets/themes/highlights_theme.tres" ) )
 		n_highlight.set_draw_behind_parent( true )
 
 		n_highlight.connect( "mouse_entered", self, "_highlight_show", [ n_highlight ], 1 )
@@ -104,7 +104,7 @@ func deferred_add_highlights():
 #
 # \see deferred_add_blurs
 # \deprecated
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func add_blurs():
 	call_deferred( "deferred_add_blurs" )
@@ -113,7 +113,7 @@ func add_blurs():
 # Add blur backgrounds to nodes that are in AddBlurBG group
 #
 # \see deferred_add_blurs
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func deferred_add_blurs():
 	var arr_blur = get_tree().get_nodes_in_group( "AddBlurBG" )
@@ -138,7 +138,7 @@ func deferred_add_blurs():
 # \arg in_node Highlight node to be shown
 #
 # \see _highlight_hide
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _highlight_show( in_node ):
 	in_node.rect_position = Vector2( -10, -5 )
@@ -151,7 +151,7 @@ func _highlight_show( in_node ):
 # \arg in_node Highlight node to be hidden
 #
 # \see _highlight_show
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _highlight_hide( in_node ):
 	in_node.modulate.a = 0
@@ -162,7 +162,7 @@ func _highlight_hide( in_node ):
 # \arg event Array of events
 # \arg in_node Node (highlight) that have been evented
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _highlight_pressed( event, in_node ):
 	if event is InputEventMouseButton:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
@@ -249,7 +249,7 @@ func _highlight_pressed( event, in_node ):
 # \more Dropdown will be killed and removed from tree
 #
 # \see _highlight_show
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _dropdown_close_pressed( event, in_node_content, in_node_close ):
 	if event is InputEventMouseButton:  #-- NOTE: Automatically converted by Godot 2 to 3 converter, please review
@@ -270,7 +270,7 @@ func _dropdown_close_pressed( event, in_node_content, in_node_close ):
 # \arg in_node_close Node that works as area to close dropdown
 #
 # \see _highlight_pressed
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _dropdown_item_pressed( in_node_optionbutton, in_int, in_node_content, in_node_close ):
 	in_node_optionbutton.select( in_int )

@@ -1,14 +1,14 @@
 #------------------------------------------------------------------------------#
 # Starting scene
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
 #-#
 # Prepare everything and load main menu or given scene
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _ready():	
 	debug.log_it( "[" + get_name() + "] Godot version " + str( Engine.get_version_info().major ) + "." + str( Engine.get_version_info().minor ) + "." + str( Engine.get_version_info().patch ) + "." + str( Engine.get_version_info().status ) )
@@ -66,7 +66,7 @@ func _ready():
 #-#
 # Will trigger when scene/node enter the tree
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _on_init_enter_tree():
 	debug.log_it( "[" + get_name() + "] _enter_tree() done" )
@@ -74,7 +74,7 @@ func _on_init_enter_tree():
 #-#
 # Will trigger when scene/node exit the tree
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _on_init_exit_tree():
 	debug.log_it( "[" + get_name() + "] _exit_tree() done" )

@@ -3,7 +3,7 @@
 # \more
 #	Also containes functions to access/alter variables and config file.
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 extends Node
 
@@ -34,7 +34,7 @@ var v_viewport_size = { "x": 0, "y": 0 }
 #-#
 # Prepare variables on loading of this singleton
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func _ready():
 	# Populate array of resolutions
@@ -87,7 +87,7 @@ func _ready():
 #-#
 # Load configuration file (user://settings.cfg) and check if success
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func reload_cfg():
 	# Load configuration file (engine.cfg) and check if success
@@ -100,7 +100,7 @@ func reload_cfg():
 #-#
 # Create config file and set def values
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func create_default_cfg():
 	debug.log_it( "[" + get_name() + "] Creating default config file (user://settings.cfg)." )
@@ -135,7 +135,7 @@ func create_default_cfg():
 #-#
 # Update viewport size variable
 #
-# \since 0.0.1
+# \since 0.1.0
 #------------------------------------------------------------------------------#
 func update_viewport_size_var( in_width, in_height ):
 	v_viewport_size.x = in_width
