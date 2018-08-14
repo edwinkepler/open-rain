@@ -38,12 +38,12 @@ func log_it( in_string ):
 				var i_line_count = get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).get_line_count()
 				# Offset needed for console output show its output without empty lines
 				var i_line_offset
-				
+
 				if OS.get_name() == "Android" or OS.get_name() == "iOS":
 					i_line_offset = 6
 				else:
 					i_line_offset = 20
-				
+
 				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).cursor_set_line( i_line_count )
 				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).insert_text_at_cursor( "\n" + in_string )
 				get_tree().get_current_scene().get_node( "panConsole/GridContainer/txtOutput" ).cursor_set_line( i_line_count - i_line_offset )
